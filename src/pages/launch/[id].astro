@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getLatestLaunches, getLaunchById } from "../../services/spacexSvc";
+
+// Server mode just for this page.
+export const prerender = false;
+
+// Because we are in server mode, we don't need to use this.
+
+// export const getStaticPaths = (async () => {
+//   const launches = await getLatestLaunches();
+
+//   return launches.map((launch) => ({
+//     params: { id: launch.id },
+//   }));
+// }) satisfies GetStaticPaths;
+
+const { id } = Astro.params;
+
+let launch;
+if (id) {
+  launch = await getLaunchById({ id });
+}
+---
+
+<Layout title=`Launch ${launch?.name}`>
+  <article>
+    <img src={launch?.links.patch.small} alt={launch?.name} />
+    <h2>Launch #{launch?.flight_number}</h2>
+    <p>{launch?.details}</p>
+  </article>
+</Layout>

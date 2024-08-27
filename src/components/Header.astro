@@ -1,0 +1,33 @@
+---
+import HeaderButton from "./HeaderButton.astro";
+import InfoIcon from "./icons/AboutIcon.astro";
+import OldestIcon from "./icons/OldestIcon.astro";
+import LaunchesIcon from "./icons/LaunchesIcon.astro";
+
+console.log("Here comes the Javascript");
+---
+
+<header class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
+  <div class="mx-auto text-center mb-8 lg:mb-16">
+    <h2 class="mb-4 text-5xl tracking-tighter font-extrabold text-white">
+      Space X with Astro!
+    </h2>
+    <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+      Comming soon!
+    </p>
+  </div>
+
+  <nav
+    class="flex flex-col items-center justify-between w-full text-center md:flex-row"
+  >
+    <HeaderButton href="/">
+      <LaunchesIcon slot="before" />Últimos lanzamientos</HeaderButton
+    >
+    <HeaderButton href="/oldest"
+      ><OldestIcon slot="before" />Lo más viejos</HeaderButton
+    >
+    <HeaderButton href="/about"
+      ><InfoIcon slot="before" />Acerca del proyecto</HeaderButton
+    >
+  </nav>
+</header>
